@@ -20,9 +20,19 @@ function exibirMensagemInicial() {
 exibirMensagemInicial();
 
 function verificarChute() {
-    let chute = document.querySelector('input').value;
-    
-    if (chute == numeroSecreto) {
+    let chuteInput = document.querySelector('input');
+    let chute = chuteInput.value.trim();
+
+    if (chute === '' || isNaN(chute) || chute < 1 || chute > numeroLimite) {
+        exibirTextoNaTela('p', `Por favor, insira um número válido entre 1 e ${numeroLimite}.`);
+        chuteInput.value = ''; 
+        chuteInput.focus(); 
+        return; 
+    }
+
+    chute = Number(chute);
+
+    if (chute === numeroSecreto) {
         exibirTextoNaTela('h1', 'Acertou!');
         let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
         let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativa}!`;
