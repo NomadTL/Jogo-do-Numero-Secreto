@@ -1,40 +1,64 @@
 🎯 Jogo do Número Secreto
-Este é um jogo simples feito com HTML, CSS e JavaScript, onde o jogador precisa adivinhar um número secreto entre 1 e 10. O jogo dá dicas se o número informado é maior ou menor que o número sorteado, até que o jogador acerte.
+Este é um jogo web simples e interativo desenvolvido com HTML, CSS e JavaScript, onde o objetivo é adivinhar um número secreto entre 1 e 10. A cada tentativa, o sistema indica se o número chutado é maior ou menor que o número correto.
 
+Agora com vidas limitadas, validação inteligente e um visual mais refinado!
 
 📌 Funcionalidades
-Sorteio aleatório de um número secreto de 1 a 10
+🔢 Sorteio aleatório de um número secreto de 1 a 10
 
-Verificação automática do palpite do jogador
+✅ Validação de entrada para impedir chutes inválidos ou fora do intervalo
 
-Feedback com voz utilizando a API ResponsiveVoice
+❤️ Sistema de vidas: o jogador tem 5 chances para acertar
 
-Contador de tentativas
+🔁 Prevenção de números repetidos a cada rodada
 
-Botão para reiniciar o jogo
+🔄 Botão de reinício que reseta o jogo com novo número
 
-Layout responsivo e moderno
+📱 Layout moderno e responsivo
 
-Prevenção de números repetidos na mesma rodada
+🎨 Estilização com feedback visual em botões e inputs
+
+🧪 Código limpo e modular (em constante evolução)
+
+💡 Funcionalidade de voz com ResponsiveVoice.js removida temporariamente — pode voltar futuramente.
+
+🧠 Lógica do jogo
+Ao carregar a página, é sorteado um número aleatório entre 1 e 10 (sem repetir).
+
+O jogador insere um número e clica em "Chutar".
+
+O sistema:
+
+Informa se o número é maior ou menor
+
+Subtrai uma vida a cada erro
+
+Exibe mensagens dinâmicas e atualiza o contador de vidas
+
+Se o jogador:
+
+Acertar, o jogo exibe uma mensagem de vitória 🎉
+
+Ficar sem vidas, exibe "Game Over" 😵
+
+O botão "Novo jogo" reinicia tudo com um novo número e vidas restauradas.
 
 💻 Tecnologias utilizadas
 HTML5
 
-CSS3 (Flexbox e Media Queries)
+CSS3 (Flexbox, Media Queries, Gradientes)
 
 JavaScript Vanilla (puro)
 
-ResponsiveVoice.js para síntese de voz
+Google Fonts: Chakra Petch & Inter
 
-Google Fonts: Chakra Petch e Inter
+🚀 Como rodar localmente
+Clone o repositório:
+git clone https://github.com/NomadTL/Jogo-do-Numero-Secreto.git
+Abra o arquivo index.html no navegador.
 
-🧠 Lógica do jogo
-Ao carregar, um número aleatório entre 1 e 10 é gerado.
+🤝 Contribuições
+Feedbacks, sugestões ou melhorias são super bem-vindos! Abra uma issue ou envie um pull request.
 
-O jogador digita um número e clica em "Chutar".
-
-O sistema informa se o número está correto, é maior ou menor que o número secreto.
-
-O número de tentativas é contado.
-
-Ao acertar, o botão "Novo jogo" é habilitado e reinicia o jogo com novo número.
+📬 Contato
+Se quiser me acompanhar ou trocar ideias, me chama no LinkedIn.
