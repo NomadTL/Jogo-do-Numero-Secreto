@@ -140,33 +140,34 @@ button:disabled {
 }
 
 .container__input:focus {
-  outline: 3px solid #1875E8;
-  background-color: #e6f0ff;
-  color: #1354A5;
+    outline: 3px solid #1875E8;
+    background-color: #e6f0ff;
+    color: #1354A5;
 }
 
 .container__botao:hover:not(:disabled) {
-  background-color: #0f5ac8;
-  cursor: pointer;
-  transform: scale(1.05);
-  transition: all 0.3s ease;
+    background-color: #0f5ac8;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
 }
 
 .container__botao:active:not(:disabled) {
-  transform: scale(0.95);
+    transform: scale(0.95);
 }
 
 .fade-in {
-  animation: fadeInUp 0.5s ease forwards;
+    animation: fadeInUp 0.5s ease forwards;
 }
 
 @keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

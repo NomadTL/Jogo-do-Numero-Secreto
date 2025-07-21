@@ -3,12 +3,18 @@ let numeroLimite = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
+let vidas = 5;
+
+function atualizarVidas() {
+    exibirTextoNaTela('#vidas-restantes', `Vidas: ${vidas}`);
+}
+
 function exibirTextoNaTela(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
-    campo.classList.remove('fade-in'); 
-    void campo.offsetWidth; 
-    campo.classList.add('fade-in');  
+    campo.classList.remove('fade-in');
+    void campo.offsetWidth;
+    campo.classList.add('fade-in');
 }
 
 
@@ -25,27 +31,38 @@ function verificarChute() {
 
     if (chute === '' || isNaN(chute) || chute < 1 || chute > numeroLimite) {
         exibirTextoNaTela('p', `Por favor, insira um número válido entre 1 e ${numeroLimite}.`);
-        chuteInput.value = ''; 
-        chuteInput.focus(); 
-        return; 
+        chuteInput.value = '';
+        chuteInput.focus();
+        return;
     }
 
     chute = Number(chute);
 
     if (chute === numeroSecreto) {
         exibirTextoNaTela('h1', 'Acertou!');
-        let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
-        let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativa}!`;
-        exibirTextoNaTela('p', mensagemTentativas);
+        exibirTextoNaTela('p', `Você descobriu o número secreto com ${tentativas} tentativas!`);
         document.getElementById('reiniciar').removeAttribute('disabled');
+        chuteInput.setAttribute('disabled', true);
+        document.querySelector('.container__botao').setAttribute('disabled', true);
     } else {
-        if (chute > numeroSecreto) {
-            exibirTextoNaTela('p', 'O número secreto é menor');
-        } else {
-            exibirTextoNaTela('p', 'O número secreto é maior');
-        }
+        vidas--;
         tentativas++;
-        limparCampo();
+
+        if (vidas <= 0) {
+            exibirTextoNaTela('h1', 'Game Over!');
+            exibirTextoNaTela('p', `Você perdeu todas as vidas! O número secreto era ${numeroSecreto}.`);
+            chuteInput.setAttribute('disabled', true);
+            document.querySelector('.container__botao').setAttribute('disabled', true);
+            document.getElementById('reiniciar').removeAttribute('disabled');
+        } else {
+            if (chute > numeroSecreto) {
+                exibirTextoNaTela('p', 'O número secreto é menor');
+            } else {
+                exibirTextoNaTela('p', 'O número secreto é maior');
+            }
+            atualizarVidas();
+            limparCampo();
+        }
     }
 }
 
@@ -72,8 +89,18 @@ function limparCampo() {
 
 function reiniciarJogo() {
     numeroSecreto = gerarNumeroAleatorio();
-    limparCampo();
+    vidas = 5;
     tentativas = 1;
     exibirMensagemInicial();
-    document.getElementById('reiniciar').setAttribute('disabled', true)
+    atualizarVidas();
+
+    let chuteInput = document.querySelector('input');
+    chuteInput.removeAttribute('disabled');
+    chuteInput.value = '';
+    chuteInput.focus();
+
+    document.querySelector('.container__botao').removeAttribute('disabled');
+    document.getElementById('reiniciar').setAttribute('disabled', true);
 }
+
+atualizarVidas();
